@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111214">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="IronLog: offline workout tracker">
+  <title>IronLog</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="view" aria-live="polite"></main>
+
+  <!-- Rest timer (sits above the tab bar while running) -->
+  <div id="rest" hidden>
+    <div class="rest-in">
+      <div class="rest-bar"><i></i></div>
+      <div class="rest-row">
+        <button class="btn sm" data-act="rest-adj" data-d="-15" aria-label="Subtract 15 seconds">−15</button>
+        <div class="rest-mid">
+          <div class="rest-time">0:00</div>
+          <div class="rest-lbl">Rest</div>
+        </div>
+        <button class="btn sm" data-act="rest-adj" data-d="15" aria-label="Add 15 seconds">+15</button>
+        <button class="btn sm" data-act="rest-skip">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <nav id="tabs" aria-label="Main">
+    <button data-act="tab" data-v="today">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      <span>Today</span>
+    </button>
+    <button data-act="tab" data-v="workout">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10h2V8h3v8H4v-2H2zm20 0h-2V8h-3v8h3v-2h2zM8 11h8v2H8z"/></svg>
+      <span>Workout</span>
+    </button>
+    <button data-act="tab" data-v="progress">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h3v10zm6 0V4h3v16zm6 0v-7h3v7z"/></svg>
+      <span>Progress</span>
+    </button>
+    <button data-act="tab" data-v="settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm8.4 4.6.1-1.1-.1-1.1 2.1-1.6-2-3.5-2.5 1a7.8 7.8 0 0 0-1.9-1.1L15.7 3h-4l-.4 2.7a7.8 7.8 0 0 0-1.9 1.1l-2.5-1-2 3.5 2.1 1.6-.1 1.1.1 1.1-2.1 1.6 2 3.5 2.5-1c.6.5 1.2.8 1.9 1.1l.4 2.7h4l.4-2.7c.7-.3 1.3-.6 1.9-1.1l2.5 1 2-3.5z"/></svg>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <div id="toast" role="status" hidden></div>
+  <div id="modal" hidden></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+
+  <script src="app.js"></script>
+</body>
+</html>
